@@ -11,6 +11,7 @@ export class KonvaLayer {
   private readonly _layer: Konva.Layer;
   private readonly _container: HTMLDivElement;
   private _resizeObserver?: ResizeObserver;
+  private _syncRequested: boolean = false;
 
   constructor(
     viewer: Viewer,
@@ -53,11 +54,9 @@ export class KonvaLayer {
       this._container.style.pointerEvents = "none";
     });
 
-    // Bind viewer events - use more comprehensive event handling
-    this._viewer.addHandler("animation", () => this._sync());
+    // Bind viewer events - optimize for smooth animation
+    this._viewer.addHandler("animation", () => this._requestSync());
     this._viewer.addHandler("animation-finish", () => this._sync());
-    this._viewer.addHandler("viewport-change", () => this._sync());
-    this._viewer.addHandler("update-viewport", () => this._sync());
     this._viewer.addHandler("open", () => this._sync());
     this._viewer.addHandler("resize", () => this._sync());
 
@@ -74,6 +73,16 @@ export class KonvaLayer {
 
     // Initial sync
     this._sync();
+  }
+
+  private _requestSync() {
+    if (!this._syncRequested) {
+      this._syncRequested = true;
+      requestAnimationFrame(() => {
+        this._sync();
+        this._syncRequested = false;
+      });
+    }
   }
 
   private _sync() {
@@ -114,7 +123,9 @@ export class KonvaLayer {
     this._stage.scale({ x: imagePixelToScreenPixel, y: imagePixelToScreenPixel });
     this._stage.position({ x: offsetX, y: offsetY });
 
-    this._stage.batchDraw();
+    // Use draw() instead of batchDraw() for smoother animation
+    // batchDraw() can cause stuttering during rapid updates
+    this._layer.draw();
   }
 
   public getLayer(): Konva.Layer {
