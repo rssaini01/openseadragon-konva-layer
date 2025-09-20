@@ -1,12 +1,12 @@
 import Konva from "konva";
 import OpenSeadragon, { Viewer, Point } from "openseadragon";
 
-export interface KonvaOverlayConfig {
+export interface KonvaStageConfig {
   // Any Konva.Stage config you want to allow
   stageOptions?: Partial<Konva.StageConfig>;
 }
 
-export class KonvaOverlay {
+export class KonvaLayer {
   private readonly _viewer: Viewer;
   private readonly _stage: Konva.Stage;
   private readonly _layer: Konva.Layer;
@@ -17,7 +17,7 @@ export class KonvaOverlay {
 
   constructor(
     viewer: Viewer,
-    { stageOptions = {} }: KonvaOverlayConfig = {},
+    { stageOptions = {} }: KonvaStageConfig = {},
     id: number
   ) {
     this._viewer = viewer;
