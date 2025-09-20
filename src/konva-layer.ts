@@ -22,6 +22,7 @@ export class KonvaLayer {
 
     // Create overlay div
     this._container = document.createElement("div");
+    this._container.id = `konva-layer_${id}`
     this._container.style.position = "absolute";
     this._container.style.top = "0";
     this._container.style.left = "0";
