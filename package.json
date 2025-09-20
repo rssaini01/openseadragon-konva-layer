@@ -1,7 +1,7 @@
 {
   "name": "openseadragon-konva",
   "version": "1.0.0",
-  "description": "",
+  "description": "A TypeScript/ESM plugin that overlays Konva.js on top of OpenSeadragon, enabling smooth, zoom- and pan-synced vector drawing and annotation in image pixel coordinates.",
   "main": "dist/konva-layer.js",
   "types": "dist/konva-layer.d.ts",
   "type": "module",
