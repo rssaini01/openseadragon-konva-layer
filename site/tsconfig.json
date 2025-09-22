@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "..",
+    "baseUrl": ".",
+    "paths": {
+      "openseadragon-konva-layer": [
+        "../src/konva-layer.ts"
+      ]
+    }
+  },
+  "include": [
+    "./**/*"
+  ]
+}

@@ -6,20 +6,32 @@
   "types": "dist/konva-layer.d.ts",
   "type": "module",
   "scripts": {
-    "clean": "rm -rf ./dist",
+    "clean": "rimraf ./dist ./site/dist",
     "build": "npm run clean && tsc",
-    "prepare": "npm run build",
-    "dev": "vite demo",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite --config site/vite.config.ts",
+    "build:demo": "npm run build && vite build --config site/vite.config.ts --mode prod",
+    "test": "echo 'No tests are added'",
+    "prepare": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "openseadragon",
+    "konva",
+    "annotation",
+    "plugin",
+    "konvajs",
+    "openseadragon-plugin",
+    "osd",
+    "overlay",
+    "layer"
+  ],
+  "author": "Ravi Shankar",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^24.5.2",
     "@types/openseadragon": "^4.1.0",
     "konva": "^10.0.2",
     "openseadragon": "^5.0.1",
+    "rimraf": "^6.0.1",
     "typescript": "^5.9.2",
     "vite": "^7.1.6"
   }

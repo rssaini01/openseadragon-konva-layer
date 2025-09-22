@@ -1,5 +1,5 @@
 import OpenSeadragon from "openseadragon";
-import { KonvaLayer } from "../src/konva-layer";
+import { KonvaLayer } from "openseadragon-konva-layer";
 import Konva from "konva"; // use build output
 
 const viewer = OpenSeadragon({
