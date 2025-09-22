@@ -1,5 +1,5 @@
 import OpenSeadragon from "openseadragon";
-import { KonvaLayer } from "openseadragon-konva-layer";
+import { createOSDKonvaLayer, KonvaLayer } from "openseadragon-konva-layer";
 import Konva from "konva"; // use build output
 
 const viewer = OpenSeadragon({
@@ -9,7 +9,7 @@ const viewer = OpenSeadragon({
 });
 
 viewer.addHandler("open", () => {
-  const overlay = new KonvaLayer(viewer, {}, 1);
+  const overlay: KonvaLayer = createOSDKonvaLayer(viewer, {}, "1");
   const layer = overlay.getLayer();
 
   const circle = new Konva.Circle({

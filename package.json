@@ -1,5 +1,5 @@
 {
-  "name": "openseadragon-konva",
+  "name": "openseadragon-konva-layer",
   "version": "1.0.0",
   "description": "A TypeScript/ESM plugin that overlays Konva.js on top of OpenSeadragon, enabling smooth, zoom- and pan-synced vector drawing and annotation in image pixel coordinates.",
   "main": "dist/konva-layer.js",
@@ -12,6 +12,14 @@
     "build:demo": "npm run build && vite build --config site/vite.config.ts --mode prod",
     "test": "echo 'No tests are added'",
     "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:rssaini01/openseadragon-konva-layer.git"
+  },
+  "homepage": "https://github.com/rssaini01/openseadragon-konva-layer.git#readme",
+  "bugs": {
+    "url": "https://github.com/rssaini01/openseadragon-konva-layer/issues"
   },
   "keywords": [
     "openseadragon",
@@ -27,7 +35,6 @@
   "author": "Ravi Shankar",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^24.5.2",
     "@types/openseadragon": "^4.1.0",
     "konva": "^10.0.2",
     "openseadragon": "^5.0.1",

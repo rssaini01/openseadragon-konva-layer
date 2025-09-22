@@ -5,7 +5,7 @@ export interface KonvaStageConfig {
   stageOptions?: Partial<Konva.StageConfig>;
 }
 
-export class KonvaLayer {
+class KonvaLayer {
   private readonly _viewer: Viewer;
   private readonly _stage: Konva.Stage;
   private readonly _layer: Konva.Layer;
@@ -16,13 +16,13 @@ export class KonvaLayer {
   constructor(
     viewer: Viewer,
     { stageOptions = {} }: KonvaStageConfig = {},
-    id: number
+    id: string
   ) {
     this._viewer = viewer;
 
     // Create overlay div
     this._container = document.createElement("div");
-    this._container.id = `konva-layer_${id}`
+    this._container.id = `konva-layer_${id}`;
     this._container.style.position = "absolute";
     this._container.style.top = "0";
     this._container.style.left = "0";
@@ -117,11 +117,16 @@ export class KonvaLayer {
     const imageTopLeftInViewport = new Point(0, 0);
     const viewportTopLeft = new Point(viewportBounds.x, viewportBounds.y);
 
-    const offsetX = (imageTopLeftInViewport.x - viewportTopLeft.x) * viewportToPixelScale;
-    const offsetY = (imageTopLeftInViewport.y - viewportTopLeft.y) * viewportToPixelScale;
+    const offsetX =
+      (imageTopLeftInViewport.x - viewportTopLeft.x) * viewportToPixelScale;
+    const offsetY =
+      (imageTopLeftInViewport.y - viewportTopLeft.y) * viewportToPixelScale;
 
     // Apply transformation - now Konva coordinates are in image pixels
-    this._stage.scale({ x: imagePixelToScreenPixel, y: imagePixelToScreenPixel });
+    this._stage.scale({
+      x: imagePixelToScreenPixel,
+      y: imagePixelToScreenPixel,
+    });
     this._stage.position({ x: offsetX, y: offsetY });
 
     // Use draw() instead of batchDraw() for smoother animation
@@ -192,3 +197,32 @@ export class KonvaLayer {
     );
   }
 }
+
+const isRequiredPluginInstalled = (): boolean => {
+  if (!OpenSeadragon) {
+    console.error("[openseadragon-konva-layer] requires OpenSeadragon");
+    return false;
+  }
+  if (!Konva) {
+    console.error("[openseadragon-konva-layer] requires Konva");
+    console.error("Please import Konva before importing this package");
+    return false;
+  }
+  return true;
+};
+
+export function createOSDKonvaLayer(
+  viewer: OpenSeadragon.Viewer,
+  options: KonvaStageConfig,
+  id: string
+): KonvaLayer {
+  if (!isRequiredPluginInstalled()) {
+    throw new Error(
+      "[openseadragon-konva-layer] required plugins are not installed"
+    );
+  }
+
+  return new KonvaLayer(viewer, options, id);
+}
+
+export type { KonvaLayer };
