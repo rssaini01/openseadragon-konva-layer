@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/openseadragon-konva-layer.svg)](https://www.npmjs.com/package/openseadragon-konva-layer)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/rssaini01/openseadragon-konva-layer/ci.yml?branch=main)](https://github.com/rssaini01/openseadragon-konva-layer/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/rssaini01/openseadragon-konva-layer/deploy-demo-site.yml?branch=main)](https://github.com/rssaini01/openseadragon-konva-layer/actions)
 [![Downloads](https://img.shields.io/npm/dm/openseadragon-konva-layer.svg)](https://www.npmjs.com/package/openseadragon-konva-layer)
 
 A TypeScript/ESM plugin that overlays **Konva.js** on top of **OpenSeadragon**, enabling smooth, zoom- and pan-synced vector drawing and annotation in _image-pixel coordinates_.
@@ -111,6 +111,12 @@ npm run build
 
 Contributions are welcome!
 Please open an issue or submit a PR if you’d like to add features, fix bugs, or improve documentation.
+
+---
+
+## Demo
+
+OpenSeadragon and Konva Layer demo can be [found here.](https://rssaini01.github.io/openseadragon-konva-layer/)
 
 ---
 
