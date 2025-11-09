@@ -35,7 +35,7 @@
   "author": "Ravi Shankar",
   "license": "MIT",
   "devDependencies": {
-    "@types/openseadragon": "^4.1.0",
+    "@types/openseadragon": "^5.0.1",
     "konva": "^10.0.2",
     "openseadragon": "^5.0.1",
     "rimraf": "^6.0.1",
